@@ -1,0 +1,13 @@
+#/etc/pacman.d/hooks/pacnew-check.hook
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Checking for .pacnew and .pacsave files...
+When = PostTransaction
+Exec = /usr/bin/bash -c 'find /etc -regextype posix-extended -regex ".+.pac(new|save)"'

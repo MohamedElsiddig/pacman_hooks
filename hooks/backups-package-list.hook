@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Making backups from your installed packages...
+Depends = coreutils
+When = PostTransaction
+Exec = /etc/pacman.d/hooks.bin/pug.sh
