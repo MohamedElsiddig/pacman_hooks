@@ -8,5 +8,6 @@ Target = *
 [Action]
 Description = Making backups from your installed packages...
 Depends = coreutils
+Depends = gist
 When = PostTransaction
 Exec = /etc/pacman.d/hooks.bin/pug.sh
