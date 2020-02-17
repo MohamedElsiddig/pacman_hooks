@@ -10,5 +10,5 @@ Target = *
 [Action]
 Description = Orphaned package notification
 When = PostTransaction
-Exec = /usr/bin/bash -c "/usr/bin/pacman -Qtd || /usr/bin/echo '=> No orphans found.'"
-
+#Exec = /usr/bin/bash -c "/usr/bin/pacman -Qtd || /usr/bin/echo '==> No orphans found.'"
+Exec = /usr/bin/bash -c 'orphans=$(pacman -Qtdq); if [[ -n "$orphans" ]]; then echo -e "\e[1mOrphan packages found:\e[0m\n$orphans\n\e[1mPlease check and remove any no longer needed\e[0m";else /usr/bin/echo -e "==> No orphans found."; fi'
