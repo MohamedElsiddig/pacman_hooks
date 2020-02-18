@@ -6,7 +6,7 @@ if [ $? -eq 0 ]; then
 else
     sudo -Hiu mohamedelsiddig /bin/sh -c 'DISPLAY=:0 notify-send "Timeshift_Backup_Beginning"'
         echo " "
-            echo "Initiating Pre-Update Timeshift Snapshot"
+            echo "Initiating Pre-Upgdate Timeshift Snapshot"
             echo " "
         echo "You have 10 seconds to cancel timeshift snapshot"
     /usr/bin/timeshift --create --comments "timeshift-pacman-hook-snapshot"
