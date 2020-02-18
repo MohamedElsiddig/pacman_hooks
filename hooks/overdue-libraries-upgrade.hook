@@ -6,6 +6,6 @@ Target = usr/lib32/*
 
 [Action]
 Description = Checking for stale library file handles...
-Depends = overdue
+#Depends = overdue
 When = PostTransaction
 Exec = /etc/pacman.d/hooks.bin/overdue.sh
