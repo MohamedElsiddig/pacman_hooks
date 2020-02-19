@@ -1,7 +1,8 @@
 [Trigger]
 Operation = Upgrade
 Type = Package
-Target = *
+Target = linux*
+Target = systemd*
 
 [Action]
 Description = Pre-upgrade timeshift snapshot
