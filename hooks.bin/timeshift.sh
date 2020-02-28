@@ -1,6 +1,6 @@
 #!/bin/bash
 #/etc/pacman.d/hooks.bin/timeshift.sh
-find "/mnt/Local Disk/timeshift/snapshots-ondemand" -mmin -60 | grep $(date +%Y-%m-%d)
+find "/mnt/System-Backups/timeshift/snapshots-ondemand" -mmin -60 | grep $(date +%Y-%m-%d)
 if [ $? -eq 0 ]; then
     echo "timeshift backup canceled, time threshold not met"
 else
