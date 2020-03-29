@@ -7,4 +7,4 @@ Target = systemd*
 [Action]
 Description = Pre-upgrade timeshift snapshot
 When = PreTransaction
-Exec = /bin/sh -c "sudo -Hiu mohamedelsiddig xterm -e /etc/pacman.d/hooks.bin/killshot.sh | /etc/pacman.d/hooks.bin/timeshift.sh"
+Exec = /bin/sh -c "sudo -Hiu mohamedelsiddig termite -e /etc/pacman.d/hooks.bin/killshot.sh | /etc/pacman.d/hooks.bin/timeshift.sh"
