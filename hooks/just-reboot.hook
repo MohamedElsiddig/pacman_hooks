@@ -17,4 +17,4 @@ Target = systemd*
 [Action]
 Description = Checking for kernel changes...
 When = PostTransaction
-Exec = /usr/bin/notify-send "Vital Linux packages are changed...Reboot is recommended."
+Exec = /bin/sh -c "notify-send \"Vital Linux packages are changed...Reboot is recommended.\""
