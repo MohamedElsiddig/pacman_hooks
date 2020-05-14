@@ -1,0 +1,31 @@
+# https://jlk.fjfi.cvut.cz/arch/manpages/man/alpm-hooks.5
+
+[Trigger]
+Operation = Remove
+Type      = Path
+Target    = etc/systemd/system.attached/*.service
+Target    = etc/systemd/system.control/*.service
+Target    = etc/systemd/system/*.service
+Target    = etc/systemd/user/*.service
+Target    = run/systemd/generator.early/*.service
+Target    = run/systemd/generator.late/*.service
+Target    = run/systemd/generator/*.service
+Target    = run/systemd/system.attached/*.service
+Target    = run/systemd/system.control/*.service
+Target    = run/systemd/system/*.service
+Target    = run/systemd/transient/*.service
+Target    = run/systemd/user/*.service
+Target    = usr/lib/systemd/system/*.service
+Target    = usr/lib/systemd/user/*.service
+Target    = usr/local/lib/systemd/system/*.service
+Target    = usr/local/lib/systemd/user/*.service
+Target    = usr/local/share/systemd/user/*.service
+Target    = usr/share/systemd/user/*.service
+
+[Action]
+Description = Systemd commands to disable uninstalled services
+When        = PreTransaction
+Depends     = systemd
+Depends     = pacutils
+Exec        = /bin/bash -c 'echo; cat | while read -r f; do service="${f##*/}"; if [ "${f/*\/system\/*/system}" = "system" ] && systemctl --quiet is-enabled "$service" 2> /dev/null; then echo -e "\t► systemctl disable $service"; elif [ "${f/*\/user\/*/user}" = "user" ] && systemctl --quiet --global is-enabled "$service" 2> /dev/null; then echo -e "\t► systemctl disable --global $service"; fi; done'
+NeedsTargets
